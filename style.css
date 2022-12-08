@@ -1,0 +1,41 @@
+* {
+    border: 1px solid red;
+    padding: 4px;
+    margin: 2px;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+body,
+.mainContainer,
+.keypad,
+.numberKeys,
+.operatorKeys {
+    display: flex;
+}
+
+.mainContainer {
+    flex-direction: column;
+}
+
+.numberKeys {
+    width: 130px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+}
+
+.numbers,
+.equal,
+.dot {
+    width: 30%;
+}
+
+.operator {
+    width: 90%;
+}
+
+.operatorKeys {
+    flex-direction: column;
+}
