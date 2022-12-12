@@ -1,23 +1,67 @@
 //VARIABLES
+let firstNumber = ''
+let secondNumber = ''
+let currentOperation = null
+
 const displayEl = document.querySelector('.displayResult');
-let numberValOne;
-let numberValTwo;
-
-console.log('numberVal on load ' + numberValOne);
-
 const numbers = document.querySelectorAll('.numbers');
+const decimal = document.querySelector('.dot');
+const operators = document.querySelectorAll('.operators');
+const equalButton = document.querySelector('.equal');
+const clearButton = document.querySelector('.clear');
+const delButton = document.querySelector('.del');
+
+//EVENT LISTENERS
 numbers.forEach((number) => {
     number.addEventListener('click', () => {
-        displayEl.textContent = number.textContent;
-        numberVal = number.textContent;
-        console.log('clicked # ' + numberVal);
+        inputNumber(number.textContent);
     })
 });
 
-const equalButton = document.querySelector('.equal');
+decimal.addEventListener('click', () => {
+    inputDecimal(decimal.textContent);
+});
+
+clearButton.addEventListener('click', () => {
+    clear();
+});
+
+delButton.addEventListener('click', () => {
+    del();
+});
+
 equalButton.addEventListener('click', () => {
     console.log('clicked equal');
 });
+
+//FUNCTIONS
+function inputNumber(number) {
+    displayEl.textContent = displayEl.textContent === '0' ? number : displayEl.textContent + number;
+};
+
+function inputDecimal(dot) {
+    if (!displayEl.textContent.includes(dot)) {
+        displayEl.textContent += dot;
+    }
+};
+
+function clear() {
+    displayEl.textContent = 0;
+};
+
+function del() {
+    if (displayEl.textContent == 0 || displayEl.textContent.length == 1) {
+        displayEl.textContent = 0;
+    } else {
+        displayEl.textContent = displayEl.textContent
+            .toString()
+            .slice(0, -1)
+    }
+};
+
+function inputEqual() {
+    // placeholder
+};
 
 //FUNCTIONS
 function add(a, b) {
