@@ -15,6 +15,10 @@ body,
     display: flex;
 }
 
+.displayNumber {
+    text-align: right;
+}
+
 .mainContainer {
     flex-direction: column;
 }
@@ -33,7 +37,19 @@ body,
 }
 
 .operators {
+    background-color: rgb(97, 183, 183);
     width: 90%;
+}
+
+.numbers,
+.clear,
+.del {
+    background-color: rgb(255, 255, 255);
+}
+
+.equal,
+.dot {
+    background-color: rgb(97, 183, 183);
 }
 
 .operatorKeys {
