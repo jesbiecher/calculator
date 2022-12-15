@@ -43,6 +43,8 @@ operators.forEach((operator) => {
     })
 });
 
+window.addEventListener('keydown', handleKeyboardInput)
+
 //FUNCTIONS
 function inputNumber(number) {
     displayNum.textContent = displayNum.textContent === '0' ? number : displayNum.textContent + number;
@@ -93,7 +95,7 @@ function inputOperator(operator) {
 
         const result = operate(firstOperator, firstNumber, secondNumber);
 
-        if (operator == '=') {
+        if (operator == '=' || operator === 'Enter') {
             displayRes.hidden = false;
             displayNum.hidden = true;
             displayNum.textContent = result;
@@ -158,3 +160,21 @@ function operate(operator, firstNumber, secondNumber) {
     }
     return secondNumber;
 };
+
+//KEYBOARD SUPPORT
+function handleKeyboardInput(e) {
+    if (e.key >= 0 && e.key <= 9) inputNumber(e.key)
+    if (e.key === '.') inputDecimal()
+    if (e.key === '=' || e.key === 'Enter') inputOperator('=')
+    if (e.key === 'Backspace') del()
+    if (e.key === 'Escape') clear()
+    if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/')
+        inputOperator(convertOperator(e.key))
+}
+
+function convertOperator(keyboardOperator) {
+    if (keyboardOperator === '/') return '/'
+    if (keyboardOperator === '*') return '×'
+    if (keyboardOperator === '-') return '−'
+    if (keyboardOperator === '+') return '+'
+}
